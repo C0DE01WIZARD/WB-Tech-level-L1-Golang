@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
-
+import (
+		"fmt"
+		"exercises_1"
+)
 func main() {
-	a:=2
-	b:=2
-	var c int
-	c= a + b
-	fmt.Println(c)
+		exercises_1.Exercise_1()
 }
