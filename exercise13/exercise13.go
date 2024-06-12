@@ -5,8 +5,8 @@ package main
 import "fmt"
 
 // Объявляем функцию swap_variable для реализации обмена переменных a,b
-func swap_variable(a int,b int) (int, int){
-			a,b =b,a
+func swap_variable(a int,b int) (int, int) {
+			a,b = b,a
 			return a,b
 }
 
