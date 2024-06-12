@@ -7,7 +7,7 @@ import (
 
 
 func main(){
-				fmt.Println("Exercise 2")
+				fmt.Println("Exercise 02")
 				// Объявляем массив со значениями {2, 4, 6, 8, 10}
 				numbers := []int{2, 4, 6, 8, 10}
 				//Использование и инициализация WaitGroup, механизма ожидания корутин

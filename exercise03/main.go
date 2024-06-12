@@ -15,6 +15,7 @@ func square(wg *sync.WaitGroup, numbers <-chan int, squaeres chan<- int ){
 
 
 func main(){
+			fmt.Println("Exercise 03")
 			numbers := [] int {2,4,6,8,10} // Инициализируем массив чисел {2,4,6,8,10}
 			numberChan := make(chan int, len(numbers)) // Канал для чисел, равным размеру массива
 			squaresChan := make(chan int, len(numbers)) // Канал для квадратов чисел
