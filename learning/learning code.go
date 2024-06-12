@@ -1,36 +1,21 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	nums := []int{2, 4, 6, 8, 10}
+    fmt.Printf("\n========== Exercise 10: ==========\n\n")
 
-	// channel to transfer data
-	data := make(chan int, len(nums))
+    // Создаем карту для вывода и слайс с заданными значениями
+    temps := make(map[int]([]float32))
+    given_vars := []float32{-25.4, -27.0, 13.0, 19.0, 15.5, 24.5, -21.0, 32.5}
 
-	// channel to read multiplied values from
-	multipliedNums := make(chan int, len(nums))
+    // Перебираем слайс и добавляем значения в карту
+    for _, value := range given_vars {
+        // int(value) / 10 * 10 - округление до ближайшего десятка
+        temps[int(value)/10*10] = append(temps[int(value)/10*10], value)
+    }
 
-	// loop though nums, write to data channel
-	for _, num := range nums {
-		data <- num
-	}
+    fmt.Printf("Temperatures: %v\n", temps)
 
-	// don't need the channel to write, so close it
-	close(data)
-
-	// read values, convert to multiplied, write to second channel
-	for d := range data {
-		multipliedNums <- d * 2
-	}
-
-	// don't need the channel to write, so close it
-	close(multipliedNums)
-
-	// print multiplied values
-	for s := range multipliedNums {
-		fmt.Println(s)
-	}
+    fmt.Printf("\n====================================\n\n")
 }

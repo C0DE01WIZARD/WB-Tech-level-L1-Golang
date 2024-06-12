@@ -6,7 +6,7 @@ import ("fmt")
 
 func main() {
 		fmt.Println("Exercise 08")
-		// Массив данных x
+		// Массив данных numners
 		numbers := [] int {1,2,3,4,6}
 	
 		channel_1 := make(chan int, len(numbers)) // Канал для передачи данных из массива. 
