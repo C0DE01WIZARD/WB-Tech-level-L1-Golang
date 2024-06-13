@@ -46,8 +46,8 @@ func main() {
 
      // Закрываем канал после завершения всех горутин
     go func() {
-        defer close(done)
-        for i := 0; i < 50; i++ {
+        defer close(done) // Вызов defer и закрытие канала done
+        for i := 0; i < 50; i++ { // Создаем горутину из 50 итераций
             counter.Increment()
         }
     }()
