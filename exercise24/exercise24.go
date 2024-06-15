@@ -15,7 +15,7 @@ func createPoint(x, y float64) *Point {
 	return &Point{x, y}
 }
 
-
+// Функция для нахождения квадратов числа для вычисления по теореме Пифагора в функции Distance
 func square(num float64) float64{
 	return num*num
 }
@@ -25,21 +25,21 @@ func square(num float64) float64{
 func Distance(point1, point2 *Point) float64 {
 	// Используем теорему Пифагора для вычисления расстояния
 	// !!! Для удобства разделили формулу D = √(x₂ - x₁) ² + (y₂ - y₁)²  на несколько частей
-    dx := point1.x - point2.x // Вычисляем расстояние, вычитая point1.x(x1) - point2.x(x2)
-    dy := point1.y - point2.y // После этого мы должны вычесть point1.y(y1) - point2.y(y2)
-	resulstSquareX := square(dx)
-	resulstSquareY := square(dy)
-	allresult := resulstSquareX+resulstSquareY
-    return math.Sqrt(allresult) // Далее возводим dx и dy в квадрат и складываем
+    dx := point1.x - point2.x // Вычисляем разница между координатами x первой и второй точек, вычитая point1.x(x1) - point2.x(x2)
+    dy := point1.y - point2.y // Вычисляем разница между координатами y первой и второй точек, вычитая point1.y(y1) - point2.y(y2)
+	resulstSquareX := square(dx) // Возводим dx в квадрат через функцию square
+	resulstSquareY := square(dy) // Возводим dy в квадрат через функцию square
+	resultSumSquare := resulstSquareX+resulstSquareY // Вычисляем общую сумму квадратов dx и dy в переменной resultSumSquare
+    return math.Sqrt(resultSumSquare) // Далее извлекаем квадратный корень из результата resultSum
 
 	/* Вариант №2 как проше посчитать по теореме Пифагора без создания дополнительной функции square 
-    return math.Sqrt(dx*dx + dy*dy) // Далее возводим dx и dy в квадрат и складываем */  
+    return math.Sqrt(dx*dx + dy*dy) // Далее возводим dx и dy в квадрат(умножая dx и dy на себя) и складываем */  
 }
 
 func main(){
 	fmt.Println("Exercise24")
 	// Создаем две точки point1 point2 для вычисления
-    point1 := createPoint(6, 3)
+    point1 := createPoint(6, 3) 
     point2 := createPoint(3, 6)
    
 	// Вычисляем и выводим расстояние между точками
