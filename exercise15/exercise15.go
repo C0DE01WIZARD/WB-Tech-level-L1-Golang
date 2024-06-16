@@ -47,9 +47,8 @@ func someFunc(){
     v = " " // Освобождаем память, через сборщика мусора
 }
 
-
 func main() {
    fmt.Println("Exercise15")
    someFunc() // Вызываем функцию someFunc
-   fmt.Println("JustString:", justString) // Выводим в консоль значения переменной justString
+   fmt.Println("Строка:", justString,"Количество символов:", len(justString) ) // Выводим в консоль значения переменной justString
 }
