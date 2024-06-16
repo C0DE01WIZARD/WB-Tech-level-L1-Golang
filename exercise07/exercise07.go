@@ -4,7 +4,7 @@
 package main
 
 import ("fmt"
-		"sync"
+		"sync" // Импорт пакета для синхронизации горутин
 )
 
 
