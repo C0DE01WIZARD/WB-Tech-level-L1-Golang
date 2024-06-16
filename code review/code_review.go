@@ -2,43 +2,23 @@ package main
 
 import (
     "fmt"
-    "sync"
+    "strings"
 )
 
-// Объявляем переменную m типа sync.Mutex.
-// Mutex - это механизм синхронизации, который позволяет блокировать доступ к ресурсу,
-// пока он используется другой горутиной.
-var m sync.Mutex
+var justString string
 
-// Объявляем переменную dataMap типа map[int]string.
-// Это словарь, где ключи - это целые числа, а значения - строки.
-var dataMap = make(map[int]string)
-
-// Функция writer принимает один аргумент типа int и записывает его в dataMap.
-func writer(key int) {
-    // Блокируем доступ к dataMap с помощью m.Lock().
-    // Это гарантирует, что только одна горутина может изменять map в данный момент времени.
-    m.Lock()
-    defer m.Unlock() // После выполнения функции unlock автоматически.
-    dataMap[key] = "value" // Записываем ключ и значение в dataMap.
+func createHugeString(size int) string {
+    // Предположим, что createHugeString создает строку заданного размера.
+    return strings.Repeat("a", size)
 }
 
-// Функция main инициализирует переменные и запускает горутины.
+func someFunc() {
+    v := createHugeString(1 << 10)
+    justString = v[:100] // Используем только часть строки
+    v = "" // Освобождаем память, освобождая v
+}
+
 func main() {
-    var wg sync.WaitGroup // Объявляем переменную wg типа sync.WaitGroup для управления горутинами.
-    wg.Add(10) // Добавляем 10 горутин в список ожидания.
-
-    for i := 0; i < 10; i++ {
-        // Запускаем горутину, передавая ей аргумент i.
-        go func(i int) {
-            defer wg.Done() // После выполнения функции уменьшаем счетчик горутин.
-            writer(i) // Записываем ключ в dataMap.
-        }(i)
-    }
-
-    wg.Wait() // Ожидаем завершения всех горутин, прежде чем продолжить.
-
-    for key, value := range dataMap { // Перебираем данные в dataMap.
-        fmt.Printf("Key: %d, Value: %s\n", key, value) // Выводим ключи и значения.
-    }
+    someFunc()
+    fmt.Println("justString:", justString)
 }

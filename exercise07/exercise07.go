@@ -29,7 +29,7 @@ func main() {
 			defer waitgroup.Done() // После выполнения уменьшаем счетчик горутин
 			writerKey(argumentKey) // Выполняем запись в dataMap
 
-		}(argumentKey) // Аргумент, который передаётся в функцию.
+		}(argumentKey) // Аргумент, который передаётся в функцию writerKey
 	}
 
 
