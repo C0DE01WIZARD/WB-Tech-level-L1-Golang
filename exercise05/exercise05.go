@@ -8,6 +8,7 @@ import ("fmt"
 
 
 func main(){
+	fmt.Println("Exercise05")
 	// Создание каналов
 	channelData := make(chan int) // Создаем канал channelData для передачи данных 
 	channelDone := make(chan bool)// Создаём канал channelDone, о сигнализировании завершения программы
